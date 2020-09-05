@@ -31,7 +31,7 @@
     (loop (irc:receive-message *worf*))))
 
 (irc:define-handler (:rpl_welcome (worf  son-of-mogh) prefix arguments)
-  (irc:send-join worf "#calisthenics"))
+  (irc:send-join worf "#lobby"))
 
 (irc:define-handler (:privmsg (worf son-of-mogh) prefix arguments)
   (destructuring-bind (channel  message) arguments
@@ -39,7 +39,6 @@
         (worf-handle-message (irc:prefix-nickname prefix) channel message)
       (error (e)
         (format t "We're Under Attack. It seems to be a~%~a~%" e)))))
-
 
 (defun worf-handle-message (sender channel message)
   (cond
@@ -54,7 +53,6 @@
 
 
 (defun worf-handle-private-message (message)
-  (format t "attempting to handle: ~a~%" message)
   (when-let (tokens (tokenize message))
     (string-case ((string-downcase (car tokens)))
       ("invite" (invite-user (cadr tokens)))
