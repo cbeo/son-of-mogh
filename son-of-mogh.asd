@@ -1,10 +1,11 @@
 ;;;; son-of-mogh.asd
 
 (asdf:defsystem #:son-of-mogh
-  :description "Describe son-of-mogh here"
-  :author "Your Name <your.name@example.com>"
-  :license  "Specify license here"
-  :version "0.0.1"
+  :description "A simple IRC bot that lets users invite their friends
+  to a private instance of https://thelounge.chat/"
+  :author "Colin OKay <okay@toyful.space>"
+  :license  "Unlicense"
+  :version "0.1.0"
   :serial t
 
   :defsystem-depends-on (:deploy)
